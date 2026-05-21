@@ -1,0 +1,209 @@
+---
+import { Image } from 'astro:assets';
+import { getEntry } from 'astro:content';
+import logo from '../../assets/images/logo-spermalieruiters-negative.png';
+
+const nav = await getEntry('navigation', 'main');
+const { items } = nav.data;
+---
+
+<header class="navbar">
+    <div class="navbar-inner">
+        <!-- Logo -->
+        <a href="/" class="navbar-logo">
+            <Image src={logo} alt="Jong Spermalieruiters Middelkerke" height={60} />
+        </a>
+
+        <!-- Desktop links -->
+        <nav class="navbar-links" aria-label="Hoofdnavigatie">
+            {items.map(item => (
+                <a href={item.href} class="navbar-link">{item.label}</a>
+            ))}
+        </nav>
+
+        <!-- Hamburger -->
+        <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <nav aria-label="Mobiele navigatie">
+            {items.map(item => (
+                <a href={item.href} class="mobile-link">{item.label}</a>
+            ))}
+        </nav>
+    </div>
+</header>
+
+<script>
+    const navbar = document.querySelector('.navbar') as HTMLElement;
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    // Scroll: voeg .scrolled class toe na 80px
+    window.addEventListener('scroll', () => {
+        navbar?.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    hamburger?.addEventListener('click', () => {
+        const isOpen = mobileMenu?.classList.toggle('is-open');
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        hamburger.setAttribute('aria-label', isOpen ? 'Menu sluiten' : 'Menu openen');
+        hamburger.classList.toggle('is-active');
+        mobileMenu?.setAttribute('aria-hidden', String(!isOpen));
+    });
+
+    // Sluit menu bij klik op een link
+    mobileMenu?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('is-open');
+            hamburger?.setAttribute('aria-expanded', 'false');
+            hamburger?.classList.remove('is-active');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+        });
+    });
+</script>
+
+<style>
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%);
+        transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .navbar.scrolled {
+        background: rgba(15, 12, 10, 0.88);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .navbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.25rem 2.5rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .navbar-logo img {
+        height: 60px;
+        width: auto;
+        display: block;
+    }
+
+    /* Desktop links */
+    .navbar-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .navbar-link {
+        color: rgba(255,255,255,0.9);
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        transition: color 0.2s;
+    }
+
+    .navbar-link:hover {
+        color: #f59e0b;
+    }
+
+    /* Hamburger */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+    }
+
+    .bar {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: white;
+        border-radius: 2px;
+        transition: transform 0.3s, opacity 0.3s;
+        transform-origin: center;
+    }
+
+    .hamburger.is-active .bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.is-active .bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+        display: none;
+        flex-direction: column;
+        background: rgba(10,10,10,0.95);
+        overflow: hidden;
+        max-height: 0;
+        padding: 0;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .mobile-menu.is-open {
+        max-height: 400px;
+        padding: 1rem 0 1.5rem;
+    }
+
+    .mobile-link {
+        display: block;
+        padding: 0.85rem 2.5rem;
+        color: rgba(255,255,255,0.85);
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        transition: color 0.2s, background 0.2s;
+    }
+
+    .mobile-link:last-child {
+        border-bottom: none;
+    }
+
+    .mobile-link:hover {
+        color: #f59e0b;
+        background: rgba(255,255,255,0.04);
+    }
+
+    @media (max-width: 768px) {
+        .navbar-links {
+            display: none;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+
+        .mobile-menu {
+            display: flex;
+        }
+    }
+</style>

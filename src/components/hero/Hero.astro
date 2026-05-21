@@ -1,0 +1,157 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../../assets/images/landing-hero.png';
+
+interface Cta {
+    label: string;
+    href: string;
+    variant: 'outline' | 'gold';
+}
+
+interface Props {
+    title: string;
+    subtitle: string;
+    ctas: Cta[];
+}
+
+const { title, subtitle, ctas } = Astro.props;
+const titleLines = title.split('\n');
+---
+
+<section class="hero">
+    <Image
+        src={heroImage}
+        alt="Jong Spermalie Ruiters hero"
+        class="hero-image"
+        widths={[640, 1024, 1440, 1920, 2560, 3840]}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+    />
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <div class="hero-inner">
+            <h1 class="hero-title">
+                {titleLines.map((line, i) => (
+                    <>{line}{i < titleLines.length - 1 && <br />}</>
+                ))}
+            </h1>
+            <p class="hero-subtitle">{subtitle}</p>
+            <div class="hero-actions">
+                {ctas.map(cta => (
+                    <a href={cta.href} class={`btn btn-${cta.variant}`}>{cta.label}</a>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+    }
+
+    .hero-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+
+                linear-gradient(
+
+                        90deg,
+
+                        rgba(0,0,0,.72) 0%,
+
+                        rgba(0,0,0,.45) 35%,
+
+                        rgba(0,0,0,.15) 100%
+
+                );
+    }
+
+    .hero-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-inner {
+        margin-left: 15%;
+        max-width: 740px;
+    }
+
+    .hero-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2.2rem, 5vw, 4.5rem);
+        font-weight: 700;
+        color: white;
+        line-height: 1.25;
+        text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    .hero-subtitle {
+        margin-top: 1.5rem;
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        color: #e7e5e4;
+        max-width: 480px;
+        line-height: 1.7;
+    }
+
+    .hero-actions {
+        margin-top: 2.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline {
+        border: 2px solid white;
+        color: white;
+        background: transparent;
+    }
+
+    .btn-outline:hover {
+        background: white;
+        color: #1c1917;
+    }
+
+    .btn-gold {
+        background: #f59e0b;
+        color: #1c1917;
+        border: 2px solid transparent;
+    }
+
+    .btn-gold:hover {
+        background: #fbbf24;
+    }
+
+    @media (max-width: 768px) {
+        .hero-inner {
+            margin-left: 8%;
+            max-width: 90%;
+        }
+    }
+</style>

@@ -1,19 +1,13 @@
 ---
+import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/hero/Hero.astro';
+
+const home = await getEntry('pages', 'home');
+const { hero } = home!.data;
 ---
 
-<BaseLayout title="Pony Event">
-	<main>
-		<section class="min-h-screen flex items-center justify-center">
-			<div class="text-center">
-				<h1 class="text-6xl font-bold">
-					Pony Event 2026
-				</h1>
-
-				<p class="mt-6 text-xl text-stone-300">
-					Rust, passie en ponysport middenin de natuur.
-				</p>
-			</div>
-		</section>
-	</main>
+<BaseLayout title="Jong Spermalieruiters Middelkerke">
+    <Hero title={hero.title} subtitle={hero.subtitle} ctas={hero.ctas} />
+    <div style="height: 200vh; background: #1c1917;"></div>
 </BaseLayout>
