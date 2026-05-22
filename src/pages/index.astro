@@ -2,12 +2,38 @@
 import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/hero/Hero.astro';
+import CountdownSection from '../components/countdown/CountdownSection.astro';
+import ClubSection from '../components/sections/ClubSection.astro';
 
 const home = await getEntry('pages', 'home');
-const { hero } = home!.data;
+const { hero, club } = home!.data;
+
+const edition = await getEntry('editions', 'ponytornooi-middelkerke/editions/2026');
 ---
 
 <BaseLayout title="Jong Spermalieruiters Middelkerke">
     <Hero title={hero.title} subtitle={hero.subtitle} ctas={hero.ctas} />
-    <div style="height: 200vh; background: #1c1917;"></div>
+    {edition && (
+        <CountdownSection
+            title={edition.data.title}
+            date={edition.data.countdown}
+            location={edition.data.location}
+            eventSlug="ponytornooi-middelkerke"
+        />
+    )}
+    <div class="section-divider"></div>
+    <ClubSection
+        title={club.title}
+        description={club.description}
+        cta={club.cta}
+        images={club.images}
+    />
 </BaseLayout>
+
+<style>
+    .section-divider {
+        width: 100%;
+        height: 1px;
+        background: #b8924a;
+    }
+</style>

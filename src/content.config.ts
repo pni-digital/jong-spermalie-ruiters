@@ -24,6 +24,18 @@ const pages = defineCollection({
                 variant: z.enum(['outline', 'gold']),
             })),
         }),
+        club: z.object({
+            title: z.string(),
+            description: z.string(),
+            cta: z.object({
+                label: z.string(),
+                href: z.string(),
+            }),
+            images: z.array(z.object({
+                src: z.string(),
+                alt: z.string(),
+            })),
+        }),
     }),
 });
 

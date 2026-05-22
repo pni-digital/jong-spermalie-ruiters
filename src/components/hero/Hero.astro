@@ -53,10 +53,14 @@ const titleLines = title.split('\n');
         position: relative;
         width: 100%;
         height: 100vh;
+        /* Extra ruimte onderaan voor de overlap */
+        padding-bottom: 160px;
     }
 
     .hero-image {
         display: block;
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -66,19 +70,14 @@ const titleLines = title.split('\n');
     .hero-overlay {
         position: absolute;
         inset: 0;
-        background:
-
-                linear-gradient(
-
-                        90deg,
-
-                        rgba(0,0,0,.72) 0%,
-
-                        rgba(0,0,0,.45) 35%,
-
-                        rgba(0,0,0,.15) 100%
-
-                );
+        background: linear-gradient(
+            90deg,
+            rgba(0,0,0,.72) 0%,
+            rgba(0,0,0,.45) 35%,
+            rgba(0,0,0,.15) 100%
+        );
+        -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
     }
 
     .hero-content {
@@ -86,6 +85,7 @@ const titleLines = title.split('\n');
         inset: 0;
         display: flex;
         align-items: center;
+        padding-bottom: 160px;
     }
 
     .hero-inner {
@@ -128,24 +128,24 @@ const titleLines = title.split('\n');
     }
 
     .btn-outline {
-        border: 2px solid white;
-        color: white;
+        border: 2px solid #b8924a;
+        color: #b8924a;
         background: transparent;
     }
 
     .btn-outline:hover {
-        background: white;
+        background: #b8924a;
         color: #1c1917;
     }
 
     .btn-gold {
-        background: #f59e0b;
+        background: #b8924a;
         color: #1c1917;
         border: 2px solid transparent;
     }
 
     .btn-gold:hover {
-        background: #fbbf24;
+        background: #caa35a;
     }
 
     @media (max-width: 768px) {

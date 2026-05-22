@@ -5,6 +5,7 @@ import logo from '../../assets/images/logo-spermalieruiters-negative.png';
 
 const nav = await getEntry('navigation', 'main');
 const { items } = nav.data;
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="navbar">
@@ -17,7 +18,7 @@ const { items } = nav.data;
         <!-- Desktop links -->
         <nav class="navbar-links" aria-label="Hoofdnavigatie">
             {items.map(item => (
-                <a href={item.href} class="navbar-link">{item.label}</a>
+                <a href={item.href} class={`navbar-link${currentPath === item.href ? ' is-active' : ''}`}>{item.label}</a>
             ))}
         </nav>
 
@@ -33,7 +34,7 @@ const { items } = nav.data;
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
         <nav aria-label="Mobiele navigatie">
             {items.map(item => (
-                <a href={item.href} class="mobile-link">{item.label}</a>
+                <a href={item.href} class={`mobile-link${currentPath === item.href ? ' is-active' : ''}`}>{item.label}</a>
             ))}
         </nav>
     </div>
@@ -117,10 +118,18 @@ const { items } = nav.data;
         letter-spacing: 0.04em;
         text-transform: uppercase;
         transition: color 0.2s;
+        padding-bottom: 3px;
+        border-bottom: 1.5px solid transparent;
+        transition: color 0.2s, border-color 0.2s;
     }
 
     .navbar-link:hover {
-        color: #f59e0b;
+        color: #b8924a;
+    }
+
+    .navbar-link.is-active {
+        color: #b8924a;
+        border-bottom-color: #b8924a;
     }
 
     /* Hamburger */
@@ -189,8 +198,14 @@ const { items } = nav.data;
     }
 
     .mobile-link:hover {
-        color: #f59e0b;
-        background: rgba(255,255,255,0.04);
+        color: #b8924a;
+        background: rgba(184,146,74,0.07);
+    }
+
+    .mobile-link.is-active {
+        color: #b8924a;
+        border-left: 2px solid #b8924a;
+        padding-left: calc(2.5rem - 2px);
     }
 
     @media (max-width: 768px) {
