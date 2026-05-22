@@ -1,0 +1,66 @@
+---
+import countdownBg from '../../assets/images/countdown-bg.png';
+interface Logo { name: string; src: string; }
+interface Props {
+    eyebrow: string; title: string; description: string;
+    cta: { label: string; href: string }; logos: Logo[];
+}
+const { eyebrow, title, description, cta, logos } = Astro.props;
+
+// Splits in rijen van 4
+const rows: typeof logos[] = [];
+for (let i = 0; i < logos.length; i += 4) {
+    rows.push(logos.slice(i, i + 4));
+}
+---
+<section class="sponsors-section">
+    <img src={countdownBg.src} alt="" class="sponsors-bg" aria-hidden="true" />
+    <div class="sponsors-overlay"></div>
+    <div class="sponsors-inner">
+        <p class="sponsors-eyebrow">{eyebrow}</p>
+        <h2 class="sponsors-title">{title}</h2>
+        <div class="sponsors-divider"></div>
+        <p class="sponsors-description">{description}</p>
+        <div class="sponsors-rows">
+            {rows.map((row, rowIndex) => (
+                <>
+                    {rowIndex > 0 && <div class="sponsors-row-divider"></div>}
+                    <div class="sponsors-row">
+                        {row.map((logo) => (
+                            <div class="sponsor-item">
+                                {logo.src ? (
+                                    <img src={logo.src} alt={logo.name} class="sponsor-logo" />
+                                ) : (
+                                    <div class="sponsor-placeholder"><span>{logo.name}</span></div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </>
+            ))}
+        </div>
+        <a href={cta.href} class="sponsors-cta">
+            {cta.label}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</section>
+<style>
+    .sponsors-section { position: relative; padding: 5rem 0 4rem; width: 100%; overflow: hidden; }
+    .sponsors-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+    .sponsors-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(18,11,4,0.92) 0%, rgba(25,16,6,0.88) 100%); }
+    .sponsors-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; padding: 0 5%; text-align: center; }
+    .sponsors-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; color: #b8924a; text-transform: uppercase; margin: 0 0 0.75rem; }
+    .sponsors-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: #f5f0e8; margin: 0 0 0.75rem; line-height: 1.2; }
+    .sponsors-divider { width: 40px; height: 2px; background: #b8924a; margin: 0 auto 1.5rem; }
+    .sponsors-description { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #c4aa88; line-height: 1.8; max-width: 600px; margin: 0 auto 3rem; }
+    .sponsors-row { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; }
+    .sponsor-item { flex: 1; min-width: 180px; max-width: 280px; display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem; }
+    .sponsor-logo { max-height: 60px; max-width: 160px; width: auto; filter: brightness(0) invert(1); opacity: 0.85; transition: opacity 0.2s; }
+    .sponsor-logo:hover { opacity: 1; }
+    .sponsor-placeholder { height: 60px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(184,146,74,0.3); padding: 0 1.5rem; border-radius: 2px; min-width: 140px; }
+    .sponsor-placeholder span { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; color: rgba(184,146,74,0.6); letter-spacing: 0.05em; }
+    .sponsors-row-divider { width: 100%; height: 1px; background: rgba(184,146,74,0.2); margin: 0.5rem 0; }
+    .sponsors-cta { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 3rem; font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; color: #b8924a; text-decoration: none; text-transform: uppercase; transition: gap 0.2s; }
+    .sponsors-cta:hover { gap: 0.75rem; }
+</style>

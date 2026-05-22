@@ -36,6 +36,23 @@ const pages = defineCollection({
                 alt: z.string(),
             })),
         }),
+        activities: z.object({
+            eyebrow: z.string(),
+            title: z.string(),
+            description: z.string(),
+            cta: z.object({ label: z.string(), href: z.string() }),
+            bottomCta: z.object({ label: z.string(), href: z.string() }),
+        }),
+        sponsors: z.object({
+            eyebrow: z.string(),
+            title: z.string(),
+            description: z.string(),
+            cta: z.object({ label: z.string(), href: z.string() }),
+            logos: z.array(z.object({
+                name: z.string(),
+                src: z.string(),
+            })),
+        }),
     }),
 });
 
@@ -49,4 +66,19 @@ const navigation = defineCollection({
     }),
 });
 
-export const collections = { editions, pages, navigation };
+const activities = defineCollection({
+    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/activities' }),
+    schema: z.object({
+        title: z.string(),
+        type: z.string(),
+        date: z.string(),
+        day: z.string(),
+        month: z.string(),
+        location: z.string().optional(),
+        time: z.string().optional(),
+        image: z.string().optional(),
+        order: z.number(),
+    }),
+});
+
+export const collections = { editions, pages, navigation, activities };

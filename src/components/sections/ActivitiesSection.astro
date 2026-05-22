@@ -1,0 +1,323 @@
+---
+interface Activity {
+    title: string;
+    type: string;
+    day: string;
+    month: string;
+    location?: string;
+    time?: string;
+    image?: string;
+}
+
+interface Props {
+    title: string;
+    eyebrow: string;
+    description: string;
+    cta: { label: string; href: string };
+    bottomCta: { label: string; href: string };
+    activities: Activity[];
+}
+
+const { title, eyebrow, description, cta, bottomCta, activities } = Astro.props;
+---
+
+<section class="activities-section">
+    <div class="activities-inner">
+
+        <!-- Links: tekst -->
+        <div class="activities-left">
+            <p class="activities-eyebrow">{eyebrow}</p>
+            <h2 class="activities-title">{title}</h2>
+            <div class="activities-divider"></div>
+            <p class="activities-description">{description}</p>
+            <a href={cta.href} class="activities-btn">
+                {cta.label}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+
+        <!-- Rechts: activiteiten lijst -->
+        <div class="activities-right">
+            {activities.map((activity, i) => (
+                <div class="activity-row">
+                    {i > 0 && <div class="activity-separator"></div>}
+                    <div class="activity-item">
+                        <div class="activity-date">
+                            <span class="activity-day">{activity.day}</span>
+                            <span class="activity-month">{activity.month}</span>
+                        </div>
+                        <div class="activity-info">
+                            <p class="activity-type">{activity.type}</p>
+                            <h3 class="activity-name">{activity.title}</h3>
+                            {activity.location && (
+                                <p class="activity-meta">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" style="display:inline;vertical-align:middle;margin-right:4px;">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                    {activity.location}
+                                </p>
+                            )}
+                            {activity.time && (
+                                <p class="activity-meta">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" style="display:inline;vertical-align:middle;margin-right:4px;">
+                                        <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                                    </svg>
+                                    {activity.time}
+                                </p>
+                            )}
+                        </div>
+                        <div class="activity-image">
+                            {activity.image ? (
+                                <img src={activity.image} alt={activity.title} />
+                            ) : (
+                                <div class="activity-image-placeholder">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                                        <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+                                    </svg>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="activities-footer">
+        <a href={bottomCta.href} class="activities-bottom-cta">
+            {bottomCta.label}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</section>
+
+<style>
+    .activities-section {
+        background: #f5ede0;
+        padding: 5rem 0 3rem;
+        width: 100%;
+    }
+
+    .activities-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 5%;
+        display: flex;
+        gap: 5rem;
+        align-items: flex-start;
+    }
+
+    /* LEFT */
+    .activities-left {
+        flex: 0 0 320px;
+        padding-top: 1rem;
+    }
+
+    .activities-eyebrow {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: #b8924a;
+        text-transform: uppercase;
+        margin: 0 0 0.75rem 0;
+    }
+
+    .activities-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 3vw, 2.8rem);
+        font-weight: 700;
+        color: #1c1712;
+        line-height: 1.2;
+        margin: 0 0 0.75rem 0;
+    }
+
+    .activities-divider {
+        width: 40px;
+        height: 2px;
+        background: #b8924a;
+        margin-bottom: 1.25rem;
+    }
+
+    .activities-description {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        color: #4a3f35;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+    }
+
+    .activities-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border: 1.5px solid #b8924a;
+        color: #b8924a;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .activities-btn:hover {
+        background: #b8924a;
+        color: #fff;
+    }
+
+    /* RIGHT */
+    .activities-right {
+        flex: 1;
+    }
+
+    .activity-separator {
+        width: 100%;
+        height: 1px;
+        background: rgba(184, 146, 74, 0.25);
+        margin: 0;
+    }
+
+    .activity-item {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        padding: 1.75rem 0;
+    }
+
+    .activity-date {
+        flex: 0 0 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .activity-day {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #1c1712;
+        line-height: 1;
+    }
+
+    .activity-month {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: #b8924a;
+        text-transform: uppercase;
+        margin-top: 0.2rem;
+    }
+
+    .activity-info {
+        flex: 1;
+    }
+
+    .activity-type {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: #b8924a;
+        text-transform: uppercase;
+        margin: 0 0 0.3rem 0;
+    }
+
+    .activity-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1c1712;
+        margin: 0 0 0.4rem 0;
+        line-height: 1.2;
+    }
+
+    .activity-meta {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        color: #6b5a4e;
+        margin: 0.15rem 0 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .activity-image {
+        flex: 0 0 160px;
+        height: 100px;
+        overflow: hidden;
+        border-radius: 2px;
+    }
+
+    .activity-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .activity-image-placeholder {
+        width: 100%;
+        height: 100%;
+        background: #e8ddd0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #b8924a;
+    }
+
+    /* FOOTER */
+    .activities-footer {
+        max-width: 1200px;
+        margin: 1rem auto 0;
+        padding: 1.5rem 5% 0;
+        border-top: 1px solid rgba(184, 146, 74, 0.25);
+        display: flex;
+        justify-content: center;
+    }
+
+    .activities-bottom-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: #b8924a;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: gap 0.2s;
+    }
+
+    .activities-bottom-cta:hover {
+        gap: 0.75rem;
+    }
+
+    @media (max-width: 900px) {
+        .activities-inner {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .activities-left {
+            flex: unset;
+            width: 100%;
+        }
+
+        .activity-image {
+            flex: 0 0 120px;
+            height: 80px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .activity-image {
+            display: none;
+        }
+    }
+</style>

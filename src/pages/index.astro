@@ -1,14 +1,22 @@
 ---
-import { getEntry } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/hero/Hero.astro';
 import CountdownSection from '../components/countdown/CountdownSection.astro';
 import ClubSection from '../components/sections/ClubSection.astro';
+import ActivitiesSection from '../components/sections/ActivitiesSection.astro';
+
+import SponsorsSection from '../components/sections/SponsorsSection.astro';
 
 const home = await getEntry('pages', 'home');
-const { hero, club } = home!.data;
+const { hero, club, activities, sponsors } = home!.data;
 
 const edition = await getEntry('editions', 'ponytornooi-middelkerke/editions/2026');
+
+const allActivities = await getCollection('activities');
+const sortedActivities = allActivities
+    .sort((a, b) => a.data.order - b.data.order)
+    .map(a => a.data);
 ---
 
 <BaseLayout title="Jong Spermalieruiters Middelkerke">
@@ -27,6 +35,22 @@ const edition = await getEntry('editions', 'ponytornooi-middelkerke/editions/202
         description={club.description}
         cta={club.cta}
         images={club.images}
+    />
+    <div class="section-divider"></div>
+    <ActivitiesSection
+        eyebrow={activities.eyebrow}
+        title={activities.title}
+        description={activities.description}
+        cta={activities.cta}
+        bottomCta={activities.bottomCta}
+        activities={sortedActivities}
+    />
+    <SponsorsSection
+        eyebrow={sponsors.eyebrow}
+        title={sponsors.title}
+        description={sponsors.description}
+        cta={sponsors.cta}
+        logos={sponsors.logos}
     />
 </BaseLayout>
 
