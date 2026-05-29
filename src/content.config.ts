@@ -51,6 +51,7 @@ const pages = defineCollection({
             logos: z.array(z.object({
                 name: z.string(),
                 src: z.string(),
+                url: z.string().optional(),
             })),
         }),
     }),
