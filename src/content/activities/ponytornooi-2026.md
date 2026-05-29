@@ -6,6 +6,7 @@ day: "13"
 month: "SEP"
 location: "Middelkerke"
 time: ""
-image: ""
+image: "/images/photos/ponytornooi-1.jpg"
+description:
 order: 1
 ---

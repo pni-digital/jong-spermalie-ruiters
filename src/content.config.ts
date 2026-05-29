@@ -31,6 +31,7 @@ const pages = defineCollection({
                 label: z.string(),
                 href: z.string(),
             }),
+            showCta: z.boolean().optional().default(true),
             images: z.array(z.object({
                 src: z.string(),
                 alt: z.string(),

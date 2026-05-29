@@ -1,0 +1,73 @@
+---
+const navItems = [
+    { label: "Home", href: "/" },
+    { label: "Ponytornooi", href: "/events/ponytornooi-middelkerke" },
+    { label: "Sponsors", href: "#trainingen" },
+    { label: "Contact", href: "#footer" },
+];
+const currentYear = new Date().getFullYear();
+---
+<footer class="footer" id="footer">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <div class="footer-logo-wrap">
+                <img src="/favicon.svg" alt="Jong Spermalieruiters" class="footer-logo" />
+                <span class="footer-club-name">Jong Spermalieruiters<br/>Middelkerke</span>
+            </div>
+            <p class="footer-tagline">Benieuwd naar onze club? Vindt ons op social media of kom eens een kijkje nemen naar één van onze trainingen op het <a href="https://www.snippenhof.com" target="_blank" rel="noopener noreferrer" class="footer-inline-link">Snippenhof</a>.</p>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/groups/621249999144408" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/jong_spermalieruiters_/?hl=nl" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+                </a>
+                <a href="mailto:info@jongspermalieruiters.be" class="footer-social" aria-label="E-mail">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-divider-v"></div>
+        <nav class="footer-nav" aria-label="Sitemap">
+            <p class="footer-nav-title">Sitemap</p>
+            <ul>
+                {navItems.map(item => (
+                    <li><a href={item.href} class="footer-nav-link">{item.label}</a></li>
+                ))}
+            </ul>
+        </nav>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; {currentYear} Jong Spermalieruiters Middelkerke. Alle rechten voorbehouden.</p>
+        <p>Lid van <a href="https://www.lrv.be" target="_blank" rel="noopener noreferrer" class="footer-inline-link">LRV</a></p>
+        <p>Created with care by <a href="https://www.pni-digital.be" target="_blank" rel="noopener noreferrer" class="footer-inline-link">pni-digital</a></p>
+    </div>
+</footer>
+<style>
+    .footer { background: #0f0a04; border-top: 1px solid rgba(184,146,74,0.25); padding: 4rem 0 0; width: 100%; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 5%; display: flex; gap: 4rem; align-items: flex-start; }
+    .footer-left { flex: 1; }
+    .footer-logo-wrap { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .footer-logo { width: 40px; height: 40px; filter: brightness(0) invert(1); opacity: 0.9; }
+    .footer-club-name { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 600; color: #f5f0e8; line-height: 1.3; }
+    .footer-tagline { font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #8a7a6a; line-height: 1.8; max-width: 380px; margin-bottom: 1.75rem; }
+    .footer-inline-link { color: #b8924a; text-decoration: none; }
+    .footer-inline-link:hover { opacity: 0.75; }
+    .footer-socials { display: flex; gap: 0.75rem; }
+    .footer-social { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgba(184,146,74,0.35); color: #b8924a; border-radius: 2px; transition: background 0.2s, color 0.2s; }
+    .footer-social:hover { background: #b8924a; color: #0f0a04; }
+    .footer-divider-v { width: 1px; align-self: stretch; background: rgba(184,146,74,0.2); flex-shrink: 0; }
+    .footer-nav { flex: 0 0 160px; }
+    .footer-nav-title { font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; color: #b8924a; text-transform: uppercase; margin: 0 0 1rem 0; }
+    .footer-nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-nav-link { font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #8a7a6a; text-decoration: none; transition: color 0.2s; }
+    .footer-nav-link:hover { color: #f5f0e8; }
+    .footer-bottom { margin-top: 3rem; border-top: 1px solid rgba(184,146,74,0.15); padding: 1.25rem 5%; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .footer-bottom p { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #4a3f35; }
+    @media (max-width: 768px) {
+        .footer-inner { flex-direction: column; gap: 2rem; }
+        .footer-divider-v { display: none; }
+        .footer-nav { flex: unset; width: 100%; }
+        .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
+    }
+</style>

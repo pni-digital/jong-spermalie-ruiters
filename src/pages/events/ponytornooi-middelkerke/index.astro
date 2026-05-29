@@ -1,0 +1,511 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CountdownSection from '../../../components/countdown/CountdownSection.astro';
+import SponsorsSection from '../../../components/sections/SponsorsSection.astro';
+
+const edition = await getEntry('editions', 'ponytornooi-middelkerke/editions/2026');
+const home = await getEntry('pages', 'home');
+const { sponsors } = home!.data;
+---
+
+<BaseLayout title="Ponytornooi Middelkerke 2026">
+    {edition && (
+        <div class="tornooi-countdown-wrap">
+            <CountdownSection
+                title={edition.data.title}
+                date={edition.data.countdown}
+                location={edition.data.location}
+                eventSlug="ponytornooi-middelkerke"
+            />
+        </div>
+    )}
+
+    <div class="tornooi-content">
+        <div class="tornooi-inner">
+            <p class="tornooi-eyebrow">Ponytornooi Middelkerke</p>
+            <h1 class="tornooi-title">13 september 2026</h1>
+            <div class="tornooi-divider"></div>
+            <div class="tornooi-body">
+                {edition?.body}
+            </div>
+        </div>
+    </div>
+
+    <section class="praktisch-section">
+        <div class="praktisch-inner">
+            <p class="praktisch-eyebrow">Praktische info</p>
+            <h2 class="praktisch-title">Alles wat je moet weten</h2>
+            <div class="praktisch-divider"></div>
+            <div class="praktisch-grid">
+                <div class="praktisch-item">
+                    <div class="praktisch-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                    <p class="praktisch-label">Datum</p>
+                    <p class="praktisch-value">13 september 2026</p>
+                </div>
+                <div class="praktisch-item">
+                    <div class="praktisch-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <p class="praktisch-label">Uur</p>
+                    <p class="praktisch-value">Wordt bekendgemaakt</p>
+                </div>
+                <div class="praktisch-item">
+                    <div class="praktisch-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <p class="praktisch-label">Locatie</p>
+                    <p class="praktisch-value">Middelkerke</p>
+                </div>
+            </div>
+            <div class="praktisch-notice">
+                <p>De volledige praktische informatie — waaronder starturen, categorieën, inschrijvingsmodaliteiten en het wedstrijdprogramma — wordt zo spoedig mogelijk gepubliceerd op deze pagina. Houd onze website en sociale media in de gaten voor de laatste updates, of neem contact met ons op voor meer informatie.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="terugblik-section">
+        <div class="terugblik-header">
+            <p class="terugblik-eyebrow">Terugblik</p>
+            <h2 class="terugblik-title">Editie 2023</h2>
+            <div class="terugblik-divider"></div>
+            <p class="terugblik-subtitle">Een dag vol passie, spanning en onvergetelijke momenten op het veld.</p>
+        </div>
+        <div class="terugblik-grid">
+            <div class="terugblik-photo t-tall"><img src="/images/tornooi-2023/FRA_0290b.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/FRA_1288.JPG" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/FRA_1434.JPG" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo t-wide"><img src="/images/tornooi-2023/DJI_0873.jpg" alt="Tornooi 2023 luchtfoto" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/FRA_1450.JPG" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/FRA_1455.JPG" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/FRA_1506.JPG" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo t-tall"><img src="/images/tornooi-2023/MAR11627.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/FRA_1509.JPG" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/FRA_1772.JPG" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo t-wide"><img src="/images/tornooi-2023/MAR11747.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/MAR11757.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/facebook_1768931195091_7419435187295703665.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/facebook_1779913519837_7465498395907423816.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/facebook_1779913724873_7465499255891867550.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/facebook_1779913772550_7465499455862919407.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo t-tall"><img src="/images/tornooi-2023/facebook_1779913797503_7465499560524600760.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/facebook_1779913940173_7465500158926745516.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/facebook_1779914002904_7465500422037753098.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo t-wide"><img src="/images/tornooi-2023/IMG-20260131-WA0007.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/facebook_1779914020772_7465500496980112569.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/facebook_1779914036389_7465500562484958118.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/facebook_1779914107959_7465500862671257958.jpg" alt="Tornooi 2023" loading="lazy" /></div>
+            <div class="terugblik-photo"><img src="/images/tornooi-2023/84ec95f1-7c0c-4f5b-9a06-3a831cfd63de.jpeg" alt="Tornooi 2023" loading="lazy" /></div>
+        </div>
+    </section>
+
+    <section class="sponsor-cta-section">
+        <div class="sponsor-cta-inner">
+            <p class="sponsor-cta-eyebrow">Word partner</p>
+            <h2 class="sponsor-cta-title">Ondersteun een prachtig evenement</h2>
+            <div class="sponsor-cta-divider"></div>
+            <p class="sponsor-cta-text">Wil je dit evenement mee mogelijk maken en je merk verbinden aan een dag vol passie, sport en gemeenschap? Download onze sponsorbrochure en ontdek alle mogelijkheden.</p>
+            <a href="/docs/ponytornooi-2026.pdf" download class="sponsor-cta-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download sponsorbrochure
+            </a>
+        </div>
+    </section>
+
+    <SponsorsSection
+        eyebrow={sponsors.eyebrow}
+        title={sponsors.title}
+        description={sponsors.description}
+        cta={sponsors.cta}
+        logos={sponsors.logos}
+    />
+</BaseLayout>
+
+<style>
+    .tornooi-countdown-wrap {
+        padding-top: 80px;
+    }
+
+    .tornooi-countdown-wrap :global(.countdown-section) {
+        margin-top: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .tornooi-content {
+        background: #faf8f5;
+        padding: 5rem 0;
+    }
+
+    .tornooi-inner {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 5%;
+    }
+
+    .tornooi-eyebrow {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: #b8924a;
+        text-transform: uppercase;
+        margin: 0 0 0.5rem;
+    }
+
+    .tornooi-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 700;
+        color: #1c1712;
+        margin: 0 0 0.75rem;
+        line-height: 1.2;
+    }
+
+    .tornooi-divider {
+        width: 48px;
+        height: 2px;
+        background: #b8924a;
+        margin-bottom: 2rem;
+    }
+
+    .tornooi-body {
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        color: #4a3f35;
+        line-height: 1.8;
+    }
+
+    /* PRAKTISCH SECTIE */
+    .praktisch-section {
+        background: #f5ede0;
+        border-top: 1px solid #b8924a;
+        padding: 5rem 0;
+    }
+
+    .praktisch-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 5%;
+    }
+
+    .praktisch-eyebrow {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: #b8924a;
+        text-transform: uppercase;
+        margin: 0 0 0.75rem;
+    }
+
+    .praktisch-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.75rem, 3vw, 2.5rem);
+        font-weight: 700;
+        color: #1c1712;
+        margin: 0 0 0.75rem;
+        line-height: 1.2;
+    }
+
+    .praktisch-divider {
+        width: 48px;
+        height: 2px;
+        background: #b8924a;
+        margin-bottom: 2.5rem;
+    }
+
+    .praktisch-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .praktisch-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .praktisch-icon {
+        color: #b8924a;
+        margin-bottom: 0.5rem;
+    }
+
+    .praktisch-label {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: #b8924a;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    .praktisch-value {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #1c1712;
+        margin: 0;
+    }
+
+    .praktisch-notice {
+        border-top: 1px solid rgba(184, 146, 74, 0.25);
+        padding-top: 2rem;
+    }
+
+    .praktisch-notice p {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        color: #6b5a4e;
+        line-height: 1.8;
+        font-style: italic;
+        max-width: 760px;
+    }
+
+    @media (max-width: 768px) {
+        .praktisch-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .praktisch-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* TERUGBLIK SECTIE */
+    .terugblik-section {
+        background: #1a1108;
+        padding: 5rem 0 0;
+    }
+
+    .terugblik-header {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 5% 3rem;
+        text-align: center;
+    }
+
+    .terugblik-eyebrow {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: #b8924a;
+        text-transform: uppercase;
+        margin: 0 0 0.75rem;
+    }
+
+    .terugblik-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        font-weight: 700;
+        color: #f5f0e8;
+        margin: 0 0 0.75rem;
+        line-height: 1.2;
+    }
+
+    .terugblik-divider {
+        width: 48px;
+        height: 2px;
+        background: #b8924a;
+        margin: 0 auto 1.25rem;
+    }
+
+    .terugblik-subtitle {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        color: #8a7a6a;
+        line-height: 1.7;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .terugblik-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 220px;
+        gap: 4px;
+    }
+
+    .terugblik-photo {
+        overflow: hidden;
+        background: #0f0a04;
+    }
+
+    .terugblik-photo.t-wide {
+        grid-column: span 2;
+    }
+
+    .terugblik-photo.t-tall {
+        grid-row: span 2;
+    }
+
+    .terugblik-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transition: transform 0.4s ease, filter 0.4s ease;
+        filter: brightness(0.85);
+    }
+
+    .terugblik-photo:hover img {
+        transform: scale(1.05);
+        filter: brightness(1);
+    }
+
+    @media (max-width: 900px) {
+        .terugblik-grid {
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 180px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .terugblik-grid {
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: 150px;
+        }
+        .terugblik-photo.t-wide,
+        .terugblik-photo.t-tall {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+    }
+
+    /* SPONSOR CTA */
+    .sponsor-cta-section {
+        background: #fdf6ed;
+        padding: 7rem 0;
+        text-align: center;
+    }
+
+    .sponsor-cta-inner {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 0 5%;
+    }
+
+    .sponsor-cta-eyebrow {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: #b8924a;
+        text-transform: uppercase;
+        margin: 0 0 0.75rem;
+    }
+
+    .sponsor-cta-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.75rem, 3vw, 2.8rem);
+        font-weight: 700;
+        color: #1c1712;
+        margin: 0 0 0.75rem;
+        line-height: 1.2;
+    }
+
+    .sponsor-cta-divider {
+        width: 48px;
+        height: 2px;
+        background: #b8924a;
+        margin: 0 auto 1.5rem;
+    }
+
+    .sponsor-cta-text {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.05rem;
+        color: #4a3f35;
+        line-height: 1.8;
+        margin-bottom: 2.5rem;
+    }
+
+    .sponsor-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 1rem 2.5rem;
+        background: #b8924a;
+        color: #1c1712;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: background 0.2s;
+    }
+
+    .sponsor-cta-btn:hover {
+        background: #caa35a;
+    }
+
+    .sponsor-cta-inner {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 5%;
+        text-align: center;
+    }
+
+    .sponsor-cta-eyebrow {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: #b8924a;
+        text-transform: uppercase;
+        margin: 0 0 0.75rem;
+    }
+
+    .sponsor-cta-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        font-weight: 700;
+        color: #1c1712;
+        margin: 0 0 0.75rem;
+        line-height: 1.2;
+    }
+
+    .sponsor-cta-divider {
+        width: 48px;
+        height: 2px;
+        background: #b8924a;
+        margin: 0 auto 1.75rem;
+    }
+
+    .sponsor-cta-text {
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        color: #4a3f35;
+        line-height: 1.85;
+        margin-bottom: 2.5rem;
+    }
+
+    .sponsor-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 1rem 2.25rem;
+        background: #b8924a;
+        color: #fff;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-decoration: none;
+        border: 2px solid #b8924a;
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .sponsor-cta-btn:hover {
+        background: transparent;
+        color: #b8924a;
+    }
+</style>

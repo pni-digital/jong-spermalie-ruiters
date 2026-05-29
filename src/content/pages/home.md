@@ -7,23 +7,28 @@ hero:
       href: "#club"
       variant: "outline"
     - label: "Ponytornooi Middelkerke 2026"
-      href: "#tornooi"
+      href: "/events/ponytornooi-middelkerke"
       variant: "gold"
 club:
   title: "Onze club"
-  description: "Jong Spermalieruiters Middelkerke is een warme en familiale ponyclub waar passie voor paarden, natuur en verbondenheid samenkomen. Een plek waar vriendschappen ontstaan, talent groeit en iedereen elkaar helpt.
-
-In een gezellige en toegankelijke sfeer bieden we wekelijkse dressuur- en springtrainingen onder begeleiding van ervaren lesgevers, professionele infrastructuur en wedstrijden aan democratische prijzen."
+  description: "Jong Spermalieruiters Middelkerke is een warme, familiale ponyclub waar passie voor paarden, natuur en verbondenheid samenkomen. Als trots lid van de LRV — de Landelijke Rijverenigingen, een door BLOSO erkende federatie met meer dan 400 plaatselijke clubs en 13.000 leden — geloven we in democratisch en laagdrempelig paard- en ponyrijden voor iedereen.\n\nBij ons groeien vriendschappen, groeit talent, en helpt iedereen elkaar. We bieden wekelijkse dressuur- en springtrainingen onder begeleiding van ervaren lesgevers, professionele infrastructuur en wedstrijden aan democratische prijzen — altijd in de sportieve, vriendschappelijke sfeer waar LRV zo fier op is."
   cta:
     label: "Meer over onze club"
     href: "/over-ons"
+  showCta: false
   images:
-    - src: ""
+    - src: "/images/photos/onze-club-1.jpg"
       alt: "Pony close-up"
-    - src: ""
+    - src: "/images/photos/onze-club-2.jpg"
       alt: "Jonge ruiter op pony"
-    - src: ""
+    - src: "/images/photos/onze-club-3.png"
       alt: "Sfeervolle rijhal bij zonsondergang"
+    - src: "/images/photos/onze-club-5.png"
+      alt: "Foto rij 2 - 1"
+    - src: "/images/photos/onze-club-4.jpg"
+      alt: "Foto rij 2 - 2"
+    - src: "/images/photos/onze-club-6.jpeg"
+      alt: "Foto rij 2 - 3"
 activities:
   eyebrow: "Activiteiten"
   title: "Aankomende activiteiten"
@@ -40,7 +45,7 @@ sponsors:
   description: "Dankzij hun steun kunnen we onze ruiters, pony's en activiteiten blijven laten groeien. Ontdek hier onze gewaardeerde partners."
   cta:
     label: "Interesse om partner te worden?"
-    href: "/contact"
+    href: "/docs/ponytornooi-2026.pdf"
   logos:
     - name: "Garage Slembrouck"
       src: "/images/sponsors/slembrouck.png"
