@@ -11,7 +11,7 @@ hero:
       variant: "gold"
 club:
   title: "Onze club"
-  description: "Jong Spermalieruiters Middelkerke is een warme, familiale ponyclub waar passie voor paarden, natuur en verbondenheid samenkomen. Als trots lid van de LRV — de Landelijke Rijverenigingen, een door BLOSO erkende federatie met meer dan 400 plaatselijke clubs en 13.000 leden — geloven we in democratisch en laagdrempelig paard- en ponyrijden voor iedereen.\n\nBij ons groeien vriendschappen, groeit talent, en helpt iedereen elkaar. We bieden wekelijkse dressuur- en springtrainingen onder begeleiding van ervaren lesgevers, professionele infrastructuur en wedstrijden aan democratische prijzen — altijd in de sportieve, vriendschappelijke sfeer waar LRV zo fier op is."
+  description: "Jong Spermalieruiters Middelkerke is een warme, familiale ponyclub waar passie voor paarden, natuur en verbondenheid samenkomen. Als trots lid van de LRV — de Landelijke Rijverenigingen, een door Sport Vlaanderen erkende federatie met meer dan 400 plaatselijke clubs en 13.000 leden — geloven we in democratisch en laagdrempelig paard- en ponyrijden voor iedereen.\n\nBij ons groeien vriendschappen, groeit talent, en helpt iedereen elkaar. We bieden wekelijkse dressuur- en springtrainingen onder begeleiding van ervaren lesgevers, professionele infrastructuur en wedstrijden aan democratische prijzen — altijd in de sportieve, vriendschappelijke sfeer waar LRV zo fier op is."
   cta:
     label: "Meer over onze club"
     href: "/over-ons"

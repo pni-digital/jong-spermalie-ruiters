@@ -4,7 +4,7 @@ import { getEntry } from 'astro:content';
 import logo from '../../assets/images/logo-spermalieruiters-negative.png';
 
 const nav = await getEntry('navigation', 'main');
-const { items } = nav.data;
+const { items } = nav!.data;
 const currentPath = Astro.url.pathname;
 ---
 
