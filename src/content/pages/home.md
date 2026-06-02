@@ -47,9 +47,9 @@ sponsors:
     label: "Interesse om partner te worden?"
     href: "/docs/ponytornooi-2026.pdf"
   logos:
-    - name: "Garage Slembrouck"
-      src: "/images/sponsors/slembrouck.png"
-      url: "https://slembrouck.be/nl/"
+    - name: "snippenhof"
+      src: "/images/sponsors/snippenhof.png"
+      url: "https://www.snippenhof.com"
     - name: "decleir"
       src: "/images/sponsors/decleir.png"
       url: "https://www.fdecleir.be/home"

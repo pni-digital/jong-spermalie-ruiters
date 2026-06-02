@@ -4,7 +4,7 @@ type: "Evenement"
 date: "2026-09-13"
 day: "13"
 month: "SEP"
-location: "Middelkerke"
+location: "Leffinge"
 time: ""
 image: "/images/photos/ponytornooi-1.jpg"
 description:
