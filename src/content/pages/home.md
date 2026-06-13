@@ -60,7 +60,7 @@ sponsors:
       src: "/images/sponsors/pni-digital.png"
       url: "https://www.pni-digital.be/"
     - name: "carin haircosmetics"
-      src: "/images/sponsors/carin.png"
+      src: "/images/sponsors/Carin-logo-2024.png"
       url: "https://www.carin.be/"
     - name: "Garage Slembrouck"
       src: "/images/sponsors/slembrouck.png"
