@@ -79,7 +79,6 @@ sponsors:
     - name: "Diemas"
       src: "/images/sponsors/diemas.png"
       url: "https://www.diemas.be/nl"
-      tier: "hoofd"
     - name: "Morgane Dierendonck"
       src: "/images/sponsors/morgane.png"
       url: "https://osteopathiemorganedierendonck.be/"
