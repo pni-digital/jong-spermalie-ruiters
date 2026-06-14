@@ -53,6 +53,7 @@ const pages = defineCollection({
                 name: z.string(),
                 src: z.string(),
                 url: z.string().optional(),
+                tier: z.enum(['hoofd', 'tornooi']).default('tornooi'),
             })),
         }),
     }),

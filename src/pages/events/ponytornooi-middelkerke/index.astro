@@ -49,19 +49,90 @@ const { sponsors } = home!.data;
                     <div class="praktisch-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                     </div>
-                    <p class="praktisch-label">Uur</p>
-                    <p class="praktisch-value">Wordt bekendgemaakt</p>
+                    <p class="praktisch-label">Aanvang</p>
+                    <p class="praktisch-value">9:00</p>
                 </div>
                 <div class="praktisch-item">
                     <div class="praktisch-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     </div>
                     <p class="praktisch-label">Locatie</p>
-                    <p class="praktisch-value">Middelkerke</p>
+                    <p class="praktisch-value">
+                        Terreinen Snippenhof<br/>
+                        Snipgatstraat 9<br/>
+                        8432 Leffinge
+                    </p>
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=Snipgatstraat+9%2C+8432+Leffinge"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="praktisch-maplink"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Bekijk op Google Maps
+                    </a>
+                    <p class="praktisch-sub">Bereikbaar via Oostendebaan – Zwarteweg</p>
                 </div>
             </div>
-            <div class="praktisch-notice">
-                <p>De volledige praktische informatie — waaronder starturen, categorieën, inschrijvingsmodaliteiten en het wedstrijdprogramma — wordt zo spoedig mogelijk gepubliceerd op deze pagina. Houd onze website en sociale media in de gaten voor de laatste updates, of neem contact met ons op voor meer informatie.</p>
+
+            <div class="praktisch-beleving-grid">
+                <div class="beleving-item">
+                    <div class="praktisch-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg>
+                    </div>
+                    <h3 class="beleving-title">Wedstrijden</h3>
+                    <p class="beleving-lead">Dressuur &amp; Jumping</p>
+                    <ul class="beleving-list">
+                        <li>Aanvang om 9u</li>
+                        <li>Meer dan 400 pony's en ruiters</li>
+                        <li>De hele dag door wedstrijdplezier</li>
+                    </ul>
+                </div>
+
+                <div class="beleving-item">
+                    <div class="praktisch-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 2v7c0 1.1.9 2 2 2h0a2 2 0 0 0 2-2V2"/><path d="M5 2v20"/><path d="M19 2v20"/><path d="M19 11c2 0 2-3 2-5 0-2.5-1-4-2-4"/></svg>
+                    </div>
+                    <h3 class="beleving-title">Hongertje na de proef?</h3>
+                    <p class="beleving-lead">Keuze uit vol-au-vent, stoofvlees of balletjes in tomatensaus</p>
+                    <ul class="beleving-list">
+                        <li>Ruiters portie (&gt;14j): 18&euro;</li>
+                        <li>Pony portie (6–14j): 14&euro;</li>
+                        <li>Shetland portie (&lt;6j): 10&euro;</li>
+                    </ul>
+                </div>
+
+                <div class="beleving-item">
+                    <div class="praktisch-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M18.178 8C19.732 8 21 9.343 21 11s-1.268 3-2.822 3c-1.165 0-2.165-.755-2.594-1.834L12 8.5m6.178-.5C16.5 8 15.5 9.5 12 12m6.178 8C19.732 16 21 14.657 21 13"/><path d="M5.822 8C4.268 8 3 9.343 3 11s1.268 3 2.822 3c1.165 0 2.165-.755 2.594-1.834"/></svg>
+                    </div>
+                    <h3 class="beleving-title">Doorlopend</h3>
+                    <p class="beleving-lead">De hele dag te verkrijgen</p>
+                    <ul class="beleving-list">
+                        <li>Ginbar &amp; Jus de Mer</li>
+                        <li>IJsjes</li>
+                        <li>Frietjes</li>
+                        <li>… en nog veel meer</li>
+                    </ul>
+                </div>
+
+                <div class="beleving-item">
+                    <div class="praktisch-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M5 11h14l-1.5 9a1 1 0 0 1-1 .85h-9A1 1 0 0 1 6.5 20z"/><path d="M5 11l2-5h10l2 5"/><path d="M12 6V3"/></svg>
+                    </div>
+                    <h3 class="beleving-title">Tombola</h3>
+                    <p class="beleving-lead">Altijd prijs!</p>
+                    <ul class="beleving-list">
+                        <li>Hoofdprijs: ballonvaart voor 4 personen</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="praktisch-kinderdorp">
+                <div class="praktisch-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M4 21V10l2-2 2 2v2h2V8l2-2 2 2v4h2v-2l2-2 2 2v11z"/><path d="M4 21h16"/><path d="M6 8V4l1 1 1-1"/><path d="M16 8V4l1 1 1-1"/></svg>
+                </div>
+                <p class="praktisch-kinderdorp-text">Ook naast de piste is er heel wat te beleven! Kom spelen, ontdekken en genieten in ons gezellige kinderdorp.</p>
             </div>
         </div>
     </section>
@@ -122,6 +193,7 @@ const { sponsors } = home!.data;
         description={sponsors.description}
         cta={sponsors.cta}
         logos={sponsors.logos}
+        showTier="alle"
     />
 </BaseLayout>
 
@@ -268,9 +340,136 @@ const { sponsors } = home!.data;
         max-width: 760px;
     }
 
+    .praktisch-maplink {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.6rem;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #b8924a;
+        text-decoration: none;
+        transition: gap 0.2s, color 0.2s;
+    }
+
+    .praktisch-maplink:hover {
+        gap: 0.65rem;
+        color: #caa35a;
+    }
+
+    .praktisch-sub {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.8rem;
+        color: #6b5a4e;
+        margin: 0.75rem 0 0;
+        line-height: 1.5;
+    }
+
+    /* BELEVING GRID */
+    .praktisch-beleving-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 1rem;
+        padding-top: 3rem;
+        border-top: 1px solid rgba(184, 146, 74, 0.25);
+    }
+
+    .beleving-item {
+        background: #faf6ef;
+        border: 1px solid rgba(184, 146, 74, 0.2);
+        border-radius: 4px;
+        padding: 2rem;
+    }
+
+    .beleving-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #1c1712;
+        margin: 0.75rem 0 0.25rem;
+        line-height: 1.2;
+    }
+
+    .beleving-lead {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #8a6d3a;
+        margin: 0 0 1rem;
+        line-height: 1.5;
+    }
+
+    .beleving-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .beleving-list li {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.92rem;
+        color: #4a3f35;
+        line-height: 1.6;
+        padding-left: 1.1rem;
+        position: relative;
+        margin-bottom: 0.35rem;
+    }
+
+    .beleving-list li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.6rem;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #b8924a;
+    }
+
+    /* KINDERDORP */
+    .praktisch-kinderdorp {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        padding: 2.5rem;
+        background: #1a1108;
+        border-radius: 4px;
+    }
+
+    .praktisch-kinderdorp .praktisch-icon {
+        color: #b8924a;
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .praktisch-kinderdorp-text {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+        font-weight: 600;
+        color: #f5f0e8;
+        margin: 0;
+        line-height: 1.35;
+    }
+
     @media (max-width: 768px) {
         .praktisch-grid {
             grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .praktisch-beleving-grid {
+            grid-template-columns: 1fr;
+        }
+        .praktisch-kinderdorp {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
         }
     }
 
