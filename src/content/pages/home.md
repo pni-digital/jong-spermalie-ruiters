@@ -103,6 +103,9 @@ sponsors:
     - name: "helaco"
       src: "/images/sponsors/helaco.png"
       url: "https://www.facebook.com/p/HelAcco-100065507139382/"
+    - name: "reizen Joye"
+      src: "/images/sponsors/reizen-Joye.png"
+      url: "https://www.reizenjoye.be/"
     - name: "Spar"
       src: "/images/sponsors/spar.png"
       url: "https://www.mijnspar.be/winkels/spar-middelkerke"
@@ -112,4 +115,11 @@ sponsors:
     - name: "westdreef"
       src: "/images/sponsors/westdreef.png"
       url: "https://www.westdreef.be/"
+    - name: "coca cola"
+      src: "/images/sponsors/coca-cola.png"
+      url: ""
+    - name: "inbev"
+      src: "/images/sponsors/inbev.png"
+      url: ""      
+
 ---
