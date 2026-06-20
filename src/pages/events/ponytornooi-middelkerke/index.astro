@@ -3,6 +3,7 @@ import { getEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CountdownSection from '../../../components/countdown/CountdownSection.astro';
 import SponsorsSection from '../../../components/sections/SponsorsSection.astro';
+import DownloadsSection from '../../../components/sections/DownloadsSection.astro';
 
 const edition = await getEntry('editions', 'ponytornooi-middelkerke/editions/2026');
 const home = await getEntry('pages', 'home');
@@ -136,6 +137,10 @@ const { sponsors } = home!.data;
             </div>
         </div>
     </section>
+
+    {edition?.data.downloads && (
+        <DownloadsSection downloads={edition.data.downloads} />
+    )}
 
     <section class="terugblik-section">
         <div class="terugblik-header">

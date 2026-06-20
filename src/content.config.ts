@@ -9,6 +9,11 @@ const editions = defineCollection({
         location: z.string(),
         heroImage: z.string(),
         countdown: z.string(),
+        downloads: z.array(z.object({
+            label: z.string(),
+            file: z.string(),
+            description: z.string().optional(),
+        })).optional(),
     }),
 });
 
