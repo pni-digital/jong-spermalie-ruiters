@@ -119,6 +119,10 @@ sponsors:
       url: ""
     - name: "inbev"
       src: "/images/sponsors/inbev.png"
-      url: ""      
+      url: ""
+    - name: "Diemas"
+      src: "/images/sponsors/diemas.png"
+      url: "https://www.diemas.be/nl" 
+      tier: "hoofd"  
 
 ---
