@@ -102,6 +102,12 @@ sponsors:
     - name: "helaco"
       src: "/images/sponsors/helaco.png"
       url: "https://www.facebook.com/p/HelAcco-100065507139382/"
+    - name: "landmeter Jonas Boone"
+      src: "/images/sponsors/landmeter.png"
+      url: "https://www.landmeters.immo/nld/landmeter-jonas-boone"
+    - name: "Haeghebaert"
+      src: "/images/sponsors/haeghebaert.png"
+      url: "https://haeghebaert.be/"
     - name: "Carrefour market Gistel"
       src: "/images/sponsors/Carrefour.png"
       url: "https://winkels.carrefour.be/nl/s/carrefour/carrefour-market-gistel/357"
@@ -130,5 +136,7 @@ sponsors:
       src: "/images/sponsors/diemas.png"
       url: "https://www.diemas.be/nl" 
       tier: "hoofd"  
+news:
+  title: "Nieuws"
 
 ---

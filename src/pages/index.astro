@@ -5,16 +5,22 @@ import Hero from '../components/hero/Hero.astro';
 import CountdownSection from '../components/countdown/CountdownSection.astro';
 import ClubSection from '../components/sections/ClubSection.astro';
 import ActivitiesSection from '../components/sections/ActivitiesSection.astro';
+import NewsSection from '../components/sections/NewsSection.astro';
 
 import SponsorsSection from '../components/sections/SponsorsSection.astro';
 
 const home = await getEntry('pages', 'home');
-const { hero, club, activities, sponsors } = home!.data;
+const { hero, club, activities, sponsors, news } = home!.data;
 
 const edition = await getEntry('editions', 'ponytornooi-middelkerke/editions/2026');
 
 const allActivities = await getCollection('activities');
 const sortedActivities = allActivities
+    .sort((a, b) => a.data.order - b.data.order)
+    .map(a => a.data);
+
+const allNews = await getCollection('news');
+const sortedNews = allNews
     .sort((a, b) => a.data.order - b.data.order)
     .map(a => a.data);
 ---
@@ -45,6 +51,11 @@ const sortedActivities = allActivities
         cta={activities.cta}
         bottomCta={activities.bottomCta}
         activities={sortedActivities}
+    />
+    <div class="section-divider"></div>
+    <NewsSection
+        title={news.title}
+        articles={sortedNews}
     />
     <SponsorsSection
         eyebrow={sponsors.eyebrow}

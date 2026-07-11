@@ -61,6 +61,9 @@ const pages = defineCollection({
                 tier: z.enum(['hoofd', 'tornooi']).default('tornooi'),
             })),
         }),
+        news: z.object({
+            title: z.string(),
+        }),
     }),
 });
 
@@ -89,4 +92,17 @@ const activities = defineCollection({
     }),
 });
 
-export const collections = { editions, pages, navigation, activities };
+const news = defineCollection({
+    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/news' }),
+    schema: z.object({
+        title: z.string(),
+        text: z.string(),
+        images: z.array(z.object({
+            src: z.string(),
+            alt: z.string(),
+        })).max(2),
+        order: z.number(),
+    }),
+});
+
+export const collections = { editions, pages, navigation, activities, news };
