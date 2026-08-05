@@ -94,6 +94,9 @@ sponsors:
     - name: "fiesten Wim"  
       src: "/images/sponsors/fietsen-wim.png"
       url: "https://www.fietsenwim.be/"
+    - name: 'Dekeyser ossaer'
+      src: "/images/sponsors/DKO-logo.png"
+      url: "https://www.dekeyzer-ossaer.be/pages/nl/"
     - name: "Phs"
       src: "/images/sponsors/phs.png"
       url: "https://calendly.com/personalhealthsolution-info"
