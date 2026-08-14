@@ -16,18 +16,19 @@ const { title, date, location, eventSlug } = Astro.props;
     <div class="countdown-overlay"></div>
     <div class="countdown-inner">
         <div class="countdown-left">
-            <p class="countdown-eyebrow">WE KIJKEN ERNAAR UIT</p>
+            <p class="countdown-eyebrow" id="eyebrow-text">WE KIJKEN ERNAAR UIT</p>
             <h2 class="countdown-title">{title}</h2>
             <div class="countdown-divider"></div>
-            <p class="countdown-description">
+            <p class="countdown-description" id="description-text">
                 Nog even geduld... het wordt opnieuw<br />een weekend om naar uit te kijken.
             </p>
-            <a href={`/events/${eventSlug}`} class="countdown-btn">ONTDEK HET TORNOOI</a>
+            <a href={`/events/${eventSlug}`} class="countdown-btn" id="main-cta">ONTDEK HET TORNOOI</a>
         </div>
 
         <div class="countdown-separator"></div>
 
         <div class="countdown-right">
+            <!-- Countdown Timer (visible before event) -->
             <div class="countdown-timer" id="countdown-timer">
                 <div class="countdown-unit">
                     <span class="countdown-number" id="cd-days">--</span>
@@ -46,7 +47,24 @@ const { title, date, location, eventSlug } = Astro.props;
                     <span class="countdown-label">SECONDEN</span>
                 </div>
             </div>
-            <p class="countdown-tagline">
+
+            <!-- Live Now Message (visible during event) -->
+            <div class="event-live" id="event-live" style="display:none;">
+                <div class="live-badge">
+                    <span class="live-pulse"></span>
+                    NU BEZIG
+                </div>
+                <p class="live-message">Het tornooi is nu volop aan de gang!</p>
+            </div>
+
+            <!-- Thank You Message (visible after event) -->
+            <div class="event-recap" id="event-recap" style="display:none;">
+                <div class="recap-badge">✓</div>
+                <p class="recap-title">Bedankt!</p>
+                <p class="recap-message">Dank je voor je deelname en onvoorwaardelijke steun! Een recap van dit tornooi komt er snel aan! Hou de website in de gaten.</p>
+            </div>
+
+            <p class="countdown-tagline" id="tagline">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="display:inline;vertical-align:middle;margin-right:6px;">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                 </svg>
@@ -61,39 +79,68 @@ const { title, date, location, eventSlug } = Astro.props;
         return String(n).padStart(2, '0');
     }
 
-    function tick() {
-        const now = Date.now();
-        const target = new Date(eventDate).getTime();
-        const diff = target - now;
+    function updateCountdownDisplay() {
+        const now = new Date();
+        const target = new Date(eventDate);
+        
+        // Calculate day boundaries
+        const eventStart = new Date(target);
+        eventStart.setHours(0, 0, 0, 0);
+        
+        const eventEnd = new Date(target);
+        eventEnd.setHours(23, 59, 59, 999);
+        
+        const nextDayStart = new Date(target);
+        nextDayStart.setDate(nextDayStart.getDate() + 1);
+        nextDayStart.setHours(0, 0, 0, 0);
 
-        const daysEl = document.getElementById('cd-days');
-        const hoursEl = document.getElementById('cd-hours');
-        const minutesEl = document.getElementById('cd-minutes');
-        const secondsEl = document.getElementById('cd-seconds');
+        const countdownTimer = document.getElementById('countdown-timer');
+        const eventLive = document.getElementById('event-live');
+        const eventRecap = document.getElementById('event-recap');
+        const eyebrowEl = document.getElementById('eyebrow-text');
+        const descriptionEl = document.getElementById('description-text');
+        const taglineEl = document.getElementById('tagline');
+        const ctaEl = document.getElementById('main-cta');
 
-        if (!daysEl) return;
+        if (now < target) {
+            // Before event - show countdown
+            countdownTimer.style.display = 'flex';
+            eventLive.style.display = 'none';
+            eventRecap.style.display = 'none';
+            
+            const diff = target - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        if (diff <= 0) {
-            daysEl.textContent = '00';
-            hoursEl.textContent = '00';
-            minutesEl.textContent = '00';
-            secondsEl.textContent = '00';
-            return;
+            document.getElementById('cd-days').textContent = pad(days);
+            document.getElementById('cd-hours').textContent = pad(hours);
+            document.getElementById('cd-minutes').textContent = pad(minutes);
+            document.getElementById('cd-seconds').textContent = pad(seconds);
+        } else if (now >= eventStart && now <= eventEnd) {
+            // During event - show live message
+            countdownTimer.style.display = 'none';
+            eventLive.style.display = 'block';
+            eventRecap.style.display = 'none';
+            
+            eyebrowEl.textContent = 'HET GAAT GEBEUREN';
+            descriptionEl.innerHTML = 'Het tornooi is op dit moment<br />in volle gang!';
+            taglineEl.style.display = 'none';
+        } else {
+            // After event - show thank you message
+            countdownTimer.style.display = 'none';
+            eventLive.style.display = 'none';
+            eventRecap.style.display = 'block';
+            
+            eyebrowEl.textContent = 'HET WAS FANTASTISCH';
+            descriptionEl.innerHTML = 'Dank je voor je deelname<br />en onvoorwaardelijke steun!';
+            taglineEl.style.display = 'none';
         }
-
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-        daysEl.textContent = pad(days);
-        hoursEl.textContent = pad(hours);
-        minutesEl.textContent = pad(minutes);
-        secondsEl.textContent = pad(seconds);
     }
 
-    tick();
-    setInterval(tick, 1000);
+    updateCountdownDisplay();
+    setInterval(updateCountdownDisplay, 1000);
 </script>
 
 <style>
@@ -155,6 +202,7 @@ const { title, date, location, eventSlug } = Astro.props;
         color: #b8924a;
         text-transform: uppercase;
         margin: 0 0 0.5rem 0;
+        transition: all 0.6s ease;
     }
 
     .countdown-title {
@@ -179,6 +227,7 @@ const { title, date, location, eventSlug } = Astro.props;
         color: #f5f0e8;
         line-height: 1.7;
         margin-bottom: 1.75rem;
+        transition: all 0.6s ease;
     }
 
     .countdown-btn {
@@ -213,6 +262,8 @@ const { title, date, location, eventSlug } = Astro.props;
         flex-direction: column;
         align-items: center;
         gap: 1.5rem;
+        min-height: 220px;
+        justify-content: center;
     }
 
     .countdown-timer {
@@ -245,10 +296,110 @@ const { title, date, location, eventSlug } = Astro.props;
         text-transform: uppercase;
     }
 
+    /* Live Event Styles */
+    .event-live {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        animation: fadeIn 0.6s ease;
+    }
+
+    .live-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 1.5rem;
+        background: rgba(184, 146, 74, 0.15);
+        border: 1.5px solid #b8924a;
+        border-radius: 4px;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: #b8924a;
+        text-transform: uppercase;
+    }
+
+    .live-pulse {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: #b8924a;
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.5;
+            transform: scale(1.2);
+        }
+    }
+
+    .live-message {
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        color: #f5f0e8;
+        text-align: center;
+        margin: 0;
+    }
+
+    /* Recap Styles */
+    .event-recap {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        animation: fadeIn 0.6s ease;
+        width: 100%;
+    }
+
+    .recap-badge {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        font-weight: 700;
+        color: #b8924a;
+        line-height: 1;
+    }
+
+    .recap-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #f5f0e8;
+        margin: 0;
+    }
+
+    .recap-message {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        color: #f5f0e8;
+        text-align: left;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
     .countdown-tagline {
         font-family: 'Inter', sans-serif;
         font-size: 0.9rem;
         color: #f5f0e8;
+        transition: all 0.6s ease;
     }
 
     .countdown-tagline svg {
@@ -289,6 +440,14 @@ const { title, date, location, eventSlug } = Astro.props;
 
         .countdown-timer {
             gap: 1.5rem;
+        }
+
+        .event-recap {
+            align-items: center;
+        }
+
+        .recap-message {
+            text-align: center;
         }
     }
 </style>
