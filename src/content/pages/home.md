@@ -68,6 +68,8 @@ sponsors:
     - name: "Calis koeltechnieken"
       src: "/images/sponsors/calis.png"
       url: "https://www.calis.be/nl/"
+    - name: "W-Technics"
+      src: "/images/sponsors/W-Technics.png"
     - name: "puntgaaf"
       src: "/images/sponsors/Puntgaaf.png"
       url: "https://www.puntgaaf.be/"
