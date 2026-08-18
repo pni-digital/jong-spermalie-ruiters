@@ -79,7 +79,7 @@ sponsors:
       url: "https://lescordes.be/"
     - name: "DGroup"
       src: "/images/sponsors/Dprojects.png"
-      url: "https://www.dgroup.be"
+      url: "https://www.dgroep.be/"
       tier: "hoofd"
     - name: "JD engineering"
       src: "/images/sponsors/jd.png"
