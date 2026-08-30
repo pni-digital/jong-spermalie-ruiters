@@ -142,6 +142,17 @@ const { sponsors } = home!.data;
         <DownloadsSection downloads={edition.data.downloads} />
     )}
 
+    <section class="circulatie-section">
+        <div class="circulatie-inner">
+            <p class="circulatie-eyebrow">Orientatie</p>
+            <h2 class="circulatie-title">Circulatieplan</h2>
+            <div class="circulatie-divider"></div>
+            <div class="circulatie-container">
+                <img src="/images/tornooi-2026/map.svg" alt="Circulatieplan Ponytornooi Middelkerke 2026" class="circulatie-map" />
+            </div>
+        </div>
+    </section>
+
     <section class="terugblik-section">
         <div class="terugblik-header">
             <p class="terugblik-eyebrow">Terugblik</p>
@@ -213,7 +224,7 @@ const { sponsors } = home!.data;
     }
 
     .tornooi-content {
-        background: #faf8f5;
+        background: #fdfcfa;
         padding: 5rem 0;
     }
 
@@ -459,6 +470,60 @@ const { sponsors } = home!.data;
         color: #f5f0e8;
         margin: 0;
         line-height: 1.35;
+    }
+
+    /* CIRCULATIE SECTIE */
+    .circulatie-section {
+        background: #fdfcfa;
+        padding: 5rem 0;
+        border-top: 1px solid #b8924a;
+    }
+
+    .circulatie-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 5%;
+    }
+
+    .circulatie-eyebrow {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: #b8924a;
+        text-transform: uppercase;
+        margin: 0 0 0.75rem;
+    }
+
+    .circulatie-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.75rem, 3vw, 2.5rem);
+        font-weight: 700;
+        color: #1c1712;
+        margin: 0 0 0.75rem;
+        line-height: 1.2;
+    }
+
+    .circulatie-divider {
+        width: 48px;
+        height: 2px;
+        background: #b8924a;
+        margin-bottom: 2.5rem;
+    }
+
+    .circulatie-container {
+        background: #fff;
+        border: 1px solid rgba(184, 146, 74, 0.2);
+        border-radius: 4px;
+        padding: 2rem;
+        overflow: hidden;
+    }
+
+    .circulatie-map {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-width: 100%;
     }
 
     @media (max-width: 768px) {

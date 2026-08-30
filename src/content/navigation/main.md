@@ -2,8 +2,8 @@
 items:
   - label: "Home"
     href: "/"
-  - label: "Ponytornooi"
-    href: "/events/ponytornooi-middelkerke"
+  - label: "Onze club"
+    href: "/club"
   - label: "Sponsors"
     href: "#sponsors"
   - label: "Contact"

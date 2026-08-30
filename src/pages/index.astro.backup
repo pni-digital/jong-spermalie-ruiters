@@ -1,0 +1,76 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/hero/Hero.astro';
+import CountdownSection from '../components/countdown/CountdownSection.astro';
+import ClubSection from '../components/sections/ClubSection.astro';
+import ActivitiesSection from '../components/sections/ActivitiesSection.astro';
+import NewsSection from '../components/sections/NewsSection.astro';
+
+import SponsorsSection from '../components/sections/SponsorsSection.astro';
+
+const home = await getEntry('pages', 'home');
+const { hero, club, activities, sponsors, news } = home!.data;
+
+const edition = await getEntry('editions', 'ponytornooi-middelkerke/editions/2026');
+
+const allActivities = await getCollection('activities');
+const sortedActivities = allActivities
+    .sort((a, b) => a.data.order - b.data.order)
+    .map(a => a.data);
+
+const allNews = await getCollection('news');
+const sortedNews = allNews
+    .sort((a, b) => a.data.order - b.data.order)
+    .map(a => a.data);
+---
+
+<BaseLayout title="Jong Spermalieruiters Middelkerke">
+    <Hero title={hero.title} subtitle={hero.subtitle} ctas={hero.ctas} />
+    {edition && (
+        <CountdownSection
+            title={edition.data.title}
+            date={edition.data.countdown}
+            location={edition.data.location}
+            eventSlug="ponytornooi-middelkerke"
+        />
+    )}
+    <div class="section-divider"></div>
+    <ClubSection
+        title={club.title}
+        description={club.description}
+        cta={club.cta}
+        showCta={club.showCta}
+        images={club.images}
+    />
+    <div class="section-divider"></div>
+    <ActivitiesSection
+        eyebrow={activities.eyebrow}
+        title={activities.title}
+        description={activities.description}
+        cta={activities.cta}
+        bottomCta={activities.bottomCta}
+        activities={sortedActivities}
+    />
+    <div class="section-divider"></div>
+    <NewsSection
+        title={news.title}
+        articles={sortedNews}
+    />
+    <SponsorsSection
+        eyebrow={sponsors.eyebrow}
+        title={sponsors.title}
+        description={sponsors.description}
+        cta={sponsors.cta}
+        logos={sponsors.logos}
+        showTier="hoofd"
+    />
+</BaseLayout>
+
+<style>
+    .section-divider {
+        width: 100%;
+        height: 1px;
+        background: #b8924a;
+    }
+</style>
